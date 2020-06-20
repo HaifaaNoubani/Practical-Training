@@ -43,6 +43,8 @@ try:
                      continue
                  
         file.close()
+
+
 except (Exception, psycopg2.Error) as error :
     if(connection):
         print("Failed to insert record into tawjihi table", error)
