@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tweet</title>
+</head>
+<body>
+<textarea placeholder="Remember, be nice!" id="myTextarea" cols="30" rows="5" onkeyup="ontextChange()"></textarea>
+    <LABEL id="myText">0</LABEL>/300
+    <br /><br />
+    <button id="image" onclick="onUploadImage()">Upload image</button>
+    <button id="tweet">post!</button>
+
+
+    <script>
+
+
+        function ontextChange() {
+            var textEntered, countRemaining, counter;
+            textEntered = document.getElementById('myTextarea').value;
+            counter = textEntered.length;
+            if (document.getElementById("image").innerHTML.localeCompare("Remove image") == 0) {
+                counter = counter + 30;
+            }
+            if (counter > 300) {
+                document.getElementById("myText").style.color = "#FF0000";
+                document.getElementById("tweet").disabled = true;
+            }
+            else {
+                document.getElementById("myText").style.color = "#000000";
+                document.getElementById("tweet").disabled = false;
+            }
+            countRemaining = document.getElementById('myText');
+            countRemaining.textContent = counter;
+        }
+        function onUploadImage() {
+            var textEntered, str1, str2;
+            str1 = "Upload image";
+            str2 = "Remove image";
+            textEntered = document.getElementById("image");
+            if (str1.localeCompare(textEntered.innerHTML) == 0) {
+                textEntered.innerHTML = "Remove image";
+                ontextChange();
+            }
+            else if (str2.localeCompare(textEntered.innerHTML) == 0) {
+                textEntered.innerHTML = "Upload image";
+                ontextChange();
+            }
+        }
+    </script>
+</body>
+</html>
