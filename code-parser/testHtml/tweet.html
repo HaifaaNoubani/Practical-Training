@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tweet</title>
+</head>
+<body>
+<textarea placeholder="Remember, be nice!" id="myTextarea" cols="30" rows="5" onkeyup="ontextChange()"></textarea>
+    <LABEL id="myText">0</LABEL>/300
+    <br /><br />
+    <button id="image" onclick="onUploadImage()">Upload image</button>
+    <button id="tweet">post!</button>
+
+
+    <script>
+
+        state = {
+            tweet: '',
+            imageUploaded: false,
+        }
+
+        function render() {
+            let count = state.tweet.length + (state.imageUploaded ? 30 : 0)
+            let notAllowed = count > 300
+
+            document.getElementById('myText').textContent = count
+            document.getElementById("myText").style.color = notAllowed ? "#FF0000" : "#000000";
+            document.getElementById("tweet").disabled = notAllowed
+            document.getElementById("image").innerHTML = state.imageUploaded ? "Remove Image" : "Upload Image"
+        }
+
+        function ontextChange() {
+            state.tweet = document.getElementById('myTextarea').value
+            render()
+        }
+        function onUploadImage() {
+            state.imageUploaded = !state.imageUploaded
+            render()
+        }
+    </script>
+</body>
+</html>
