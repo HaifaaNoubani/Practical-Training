@@ -5,7 +5,6 @@ import psycopg2
 
 
 app = Flask(__name__)
-
 @app.route('/<name>')
 def my_search(name):
     try:
